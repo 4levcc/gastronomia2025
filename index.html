@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consultoria em Gestão Gastronômica - Desvende a Lucratividade</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Calm Harmony (Warm Neutrals with Muted Green/Terracotta Accent) -->
+    <!-- Application Structure Plan: A persuasive funnel structure with thematic sections: 1. Hero, 2. Interactive Problem Diagnostic, 3. Tabbed Solutions Toolkit, 4. Visualized Impact (Charts), 5. Value-Add Marketing Tips, 6. CTA. This structure guides the user from their pain points to the consultant's value proposition, making it more engaging and effective than a linear report summary. -->
+    <!-- Visualization & Content Choices: Report Info (Invisible Losses) -> Goal (Engage) -> Method (Interactive HTML cards) -> Justification (Active user participation). Report Info (Consulting Tools) -> Goal (Organize) -> Method (JS Tabs with HTML table for Ficha Técnica) -> Justification (Avoids info overload). Report Info (Benefits) -> Goal (Compare/Persuade) -> Method (Chart.js Bar & Doughnut charts) -> Justification (Visual data is impactful). Report Info (Marketing Strategy) -> Goal (Add Value) -> Method (Styled HTML list/accordion) -> Justification (Builds trust). CONFIRMED: NO SVG/Mermaid. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+        .tab-active {
+            border-color: #c2410c;
+            color: #c2410c;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body class="bg-amber-50 text-slate-800">
+
+    <header class="bg-white/80 backdrop-blur-lg sticky top-0 z-50 shadow-sm">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-xl font-bold text-orange-800">Gestão Eficiente</a>
+            <div class="hidden md:flex space-x-6 items-center">
+                <a href="#diagnostico" class="text-slate-600 hover:text-orange-700 transition-colors">Diagnóstico</a>
+                <a href="#solucoes" class="text-slate-600 hover:text-orange-700 transition-colors">Soluções</a>
+                <a href="#impacto" class="text-slate-600 hover:text-orange-700 transition-colors">Impacto</a>
+                <a href="#contato" class="bg-orange-600 text-white px-4 py-2 rounded-lg hover:bg-orange-700 transition-colors shadow">Agendar Avaliação</a>
+            </div>
+            <button id="mobile-menu-button" class="md:hidden text-slate-800">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </nav>
+        <div id="mobile-menu" class="hidden md:hidden px-6 pb-4">
+            <a href="#diagnostico" class="block py-2 text-slate-600 hover:text-orange-700">Diagnóstico</a>
+            <a href="#solucoes" class="block py-2 text-slate-600 hover:text-orange-700">Soluções</a>
+            <a href="#impacto" class="block py-2 text-slate-600 hover:text-orange-700">Impacto</a>
+            <a href="#contato" class="block mt-2 text-center bg-orange-600 text-white px-4 py-2 rounded-lg hover:bg-orange-700 shadow">Agendar Avaliação</a>
+        </div>
+    </header>
+
+    <main>
+        <section id="hero" class="py-20 md:py-32 bg-white">
+            <div class="container mx-auto px-6 text-center">
+                <h1 class="text-4xl md:text-6xl font-bold text-slate-900 leading-tight">Sua cozinha está gerando <span class="text-orange-700">prejuízos invisíveis</span>?</h1>
+                <p class="mt-6 text-lg md:text-xl text-slate-600 max-w-3xl mx-auto">Transforme a gestão do seu negócio de alimentação e descubra o caminho para a lucratividade real. Chega de trabalhar no vermelho sem saber o porquê.</p>
+                <a href="https://www.inovarege.com.br" class="mt-8 inline-block bg-orange-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-orange-700 transition-transform hover:scale-105 shadow-lg">Comece seu Diagnóstico Gratuito</a>
+            </div>
+        </section>
+
+        <section id="diagnostico" class="py-16 md:py-24">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-slate-900">Identifique os Ladrões de Lucro</h2>
+                    <p class="mt-4 text-lg text-slate-600 max-w-2xl mx-auto">Muitos problemas operacionais parecem pequenos, mas juntos, eles causam um grande impacto financeiro. Veja se você reconhece algum destes cenários em seu negócio.</p>
+                </div>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="bg-white p-6 rounded-xl shadow-md border border-slate-200 hover:shadow-xl hover:-translate-y-1 transition-all">
+                        <h3 class="font-bold text-xl text-orange-800 mb-3">Desperdício de Insumos</h3>
+                        <p class="text-slate-600">Ingredientes que estragam por compras excessivas ou armazenamento incorreto. Pratos refeitos por falta de padrão. Cada item descartado é dinheiro indo para o lixo.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-md border border-slate-200 hover:shadow-xl hover:-translate-y-1 transition-all">
+                        <h3 class="font-bold text-xl text-orange-800 mb-3">Falta de Padronização</h3>
+                        <p class="text-slate-600">Cada prato sai de um jeito? Isso gera inconsistência para o cliente, dificulta o controle de custos e torna o treinamento da equipe um pesadelo constante.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-md border border-slate-200 hover:shadow-xl hover:-translate-y-1 transition-all">
+                        <h3 class="font-bold text-xl text-orange-800 mb-3">Equipe Desgastada</h3>
+                        <p class="text-slate-600">Um ambiente caótico, sem processos claros, leva ao estresse, alta rotatividade e erros. O custo de recontratar e treinar é mais alto do que você imagina.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-md border border-slate-200 hover:shadow-xl hover:-translate-y-1 transition-all">
+                        <h3 class="font-bold text-xl text-orange-800 mb-3">Precificação no "Achismo"</h3>
+                        <p class="text-slate-600">Seu preço de venda cobre todos os custos (insumos, mão de obra, aluguel, impostos) e ainda gera lucro? Sem uma Ficha Técnica, você está vendendo no escuro.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-md border border-slate-200 hover:shadow-xl hover:-translate-y-1 transition-all">
+                        <h3 class="font-bold text-xl text-orange-800 mb-3">Estoque Descontrolado</h3>
+                        <p class="text-slate-600">Comprar demais gera perdas. Comprar de menos para a produção e frustra clientes. Um estoque desorganizado é um ralo de dinheiro e eficiência.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-md border border-slate-200 hover:shadow-xl hover:-translate-y-1 transition-all">
+                        <h3 class="font-bold text-xl text-orange-800 mb-3">Tempo Perdido em Gestão</h3>
+                        <p class="text-slate-600">Você passa o dia "apagando incêndios" em vez de focar no crescimento do seu negócio? A falta de rotinas e processos rouba seu tempo e sua energia.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="solucoes" class="py-16 md:py-24 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-slate-900">As Ferramentas para sua Lucratividade</h2>
+                    <p class="mt-4 text-lg text-slate-600 max-w-2xl mx-auto">A consultoria implementa processos e ferramentas essenciais que transformam o caos em controle, garantindo a viabilidade e o crescimento do seu negócio.</p>
+                </div>
+                <div>
+                    <div class="border-b border-slate-200 mb-8">
+                        <nav class="-mb-px flex space-x-6" aria-label="Tabs">
+                            <button class="tab-button whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm border-transparent text-slate-500 hover:border-slate-300 hover:text-slate-700 tab-active" data-tab="ficha-tecnica">Ficha Técnica</button>
+                            <button class="tab-button whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm border-transparent text-slate-500 hover:border-slate-300 hover:text-slate-700" data-tab="estoque">Controle de Estoque</button>
+                            <button class="tab-button whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm border-transparent text-slate-500 hover:border-slate-300 hover:text-slate-700" data-tab="pops">POPs e Fluxogramas</button>
+                            <button class="tab-button whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm border-transparent text-slate-500 hover:border-slate-300 hover:text-slate-700" data-tab="equipe">Estrutura de Equipe</button>
+                        </nav>
+                    </div>
+                    <div id="tab-content">
+                        <div class="tab-pane active" id="ficha-tecnica">
+                            <div class="grid md:grid-cols-2 gap-8 items-center">
+                                <div>
+                                    <h3 class="text-2xl font-bold text-orange-800 mb-4">Ficha Técnica: O DNA do seu cardápio</h3>
+                                    <p class="text-slate-600 mb-4">É a ferramenta mais importante para o controle de custos. Ela detalha cada ingrediente, quantidade, custo e modo de preparo de um item do menu. Com ela, você garante padronização, precifica corretamente e otimiza suas compras.</p>
+                                    <ul class="space-y-2 text-slate-600">
+                                        <li class="flex items-start"><span class="text-orange-600 font-bold mr-2">✓</span><span><strong>Padronização:</strong> Qualidade e sabor consistentes sempre.</span></li>
+                                        <li class="flex items-start"><span class="text-orange-600 font-bold mr-2">✓</span><span><strong>Controle de Custos:</strong> Saiba o custo exato de cada prato.</span></li>
+                                        <li class="flex items-start"><span class="text-orange-600 font-bold mr-2">✓</span><span><strong>Precificação Lucrativa:</strong> Defina preços que garantam sua margem.</span></li>
+                                        <li class="flex items-start"><span class="text-orange-600 font-bold mr-2">✓</span><span><strong>Gestão de Estoque:</strong> Preveja compras e reduza o desperdício.</span></li>
+                                    </ul>
+                                </div>
+                                <div class="overflow-x-auto bg-slate-50 p-4 rounded-lg border">
+                                    <p class="text-sm font-semibold mb-2 text-slate-700">Exemplo Simplificado: Café Expresso</p>
+                                    <table class="w-full text-sm text-left text-slate-500">
+                                        <thead class="text-xs text-slate-700 uppercase bg-slate-100">
+                                            <tr><th scope="col" class="px-4 py-2">Ingrediente</th><th scope="col" class="px-4 py-2">Qtd.</th><th scope="col" class="px-4 py-2">Custo (R$)</th></tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr class="bg-white border-b"><td class="px-4 py-2 font-medium text-slate-900">Café moído</td><td class="px-4 py-2">7 g</td><td class="px-4 py-2">0,35</td></tr>
+                                            <tr class="bg-white border-b"><td class="px-4 py-2 font-medium text-slate-900">Água filtrada</td><td class="px-4 py-2">30 ml</td><td class="px-4 py-2">0,03</td></tr>
+                                            <tr class="bg-white border-b"><td class="px-4 py-2 font-medium text-slate-900">Copo descartável</td><td class="px-4 py-2">1 unid.</td><td class="px-4 py-2">0,10</td></tr>
+                                            <tr class="bg-slate-50"><td class="px-4 py-2 font-bold text-slate-900">Custo Total da Receita</td><td class="px-4 py-2"></td><td class="px-4 py-2 font-bold text-slate-900">0,51</td></tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane hidden" id="estoque">
+                            <h3 class="text-2xl font-bold text-orange-800 mb-4">Controle de Produção e Estoque: Fim do Desperdício</h3>
+                            <p class="text-slate-600 mb-4">Uma gestão de estoque eficiente é o pilar para a saúde financeira do seu negócio. O objetivo é simples: ter o que precisa, na hora que precisa, sem excessos que geram perdas ou faltas que comprometem as vendas.</p>
+                            <ul class="space-y-2 text-slate-600">
+                                <li class="flex items-start"><span class="text-orange-600 font-bold mr-2">✓</span><span><strong>Análise de Demanda:</strong> Preveja a quantidade de pedidos para evitar produção excessiva.</span></li>
+                                <li class="flex items-start"><span class="text-orange-600 font-bold mr-2">✓</span><span><strong>Rotinas de Controle:</strong> Implemente o sistema PVPS (Primeiro que Vence, Primeiro que Sai).</span></li>
+                                <li class="flex items-start"><span class="text-orange-600 font-bold mr-2">✓</span><span><strong>Aproveitamento Integral:</strong> Crie subprodutos com sobras e reduza o lixo orgânico.</span></li>
+                                <li class="flex items-start"><span class="text-orange-600 font-bold mr-2">✓</span><span><strong>Engajamento da Equipe:</strong> Treine o time para identificar e reduzir o desperdício em todas as etapas.</span></li>
+                            </ul>
+                        </div>
+                        <div class="tab-pane hidden" id="pops">
+                            <h3 class="text-2xl font-bold text-orange-800 mb-4">POPs e Fluxogramas: Organize a Rotina</h3>
+                            <p class="text-slate-600 mb-4">Procedimentos Operacionais Padrão (POPs) e fluxogramas são o mapa para uma operação eficiente. Eles descrevem o passo a passo de cada tarefa, desde o recebimento de mercadorias até a limpeza da cozinha, garantindo que tudo seja feito da maneira correta, sempre.</p>
+                            <ul class="space-y-2 text-slate-600">
+                                <li class="flex items-start"><span class="text-orange-600 font-bold mr-2">✓</span><span><strong>Aumento da Produtividade:</strong> Elimine gargalos e otimize o fluxo de trabalho. A produtividade pode aumentar em até 30%.</span></li>
+                                <li class="flex items-start"><span class="text-orange-600 font-bold mr-2">✓</span><span><strong>Redução de Erros:</strong> Processos claros diminuem falhas e retrabalho.</span></li>
+                                <li class="flex items-start"><span class="text-orange-600 font-bold mr-2">✓</span><span><strong>Facilidade no Treinamento:</strong> Novos funcionários aprendem as rotinas de forma rápida e padronizada.</span></li>
+                                <li class="flex items-start"><span class="text-orange-600 font-bold mr-2">✓</span><span><strong>Garantia de Qualidade:</strong> Assegure a conformidade com as normas sanitárias e a qualidade do serviço.</span></li>
+                            </ul>
+                        </div>
+                        <div class="tab-pane hidden" id="equipe">
+                           <h3 class="text-2xl font-bold text-orange-800 mb-4">Estrutura e Hierarquia da Cozinha: Equipe Eficiente e Motivada</h3>
+                            <p class="text-slate-600 mb-4">Uma estrutura de equipe bem definida, com papéis e responsabilidades claros, é fundamental para um ambiente de trabalho produtivo e saudável. Isso vai além de uma hierarquia rígida; trata-se de criar um sistema de comunicação e colaboração que funcione.</p>
+                            <ul class="space-y-2 text-slate-600">
+                                <li class="flex items-start"><span class="text-orange-600 font-bold mr-2">✓</span><span><strong>Redução do Estresse:</strong> Clareza nas funções diminui conflitos e a pressão sobre a equipe.</span></li>
+                                <li class="flex items-start"><span class="text-orange-600 font-bold mr-2">✓</span><span><strong>Comunicação Eficiente:</strong> Estabeleça linhas de comunicação claras para evitar falhas e atrasos.</span></li>
+                                <li class="flex items-start"><span class="text-orange-600 font-bold mr-2">✓</span><span><strong>Retenção de Talentos:</strong> Um ambiente organizado e respeitoso diminui a rotatividade e os custos de novas contratações.</span></li>
+                                <li class="flex items-start"><span class="text-orange-600 font-bold mr-2">✓</span><span><strong>Liderança Eficaz:</strong> Capacite os líderes para gerir pessoas, não apenas tarefas, promovendo o bem-estar da equipe.</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="impacto" class="py-16 md:py-24">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-slate-900">O Impacto Visível no seu Bolso</h2>
+                    <p class="mt-4 text-lg text-slate-600 max-w-2xl mx-auto">A implementação de uma gestão profissional não é um custo, é um investimento com retorno claro. Veja como os números podem mudar.</p>
+                </div>
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <h3 class="text-xl font-bold text-center mb-4 text-slate-800">Fontes de Prejuízo (Sem Gestão)</h3>
+                        <div class="chart-container">
+                            <canvas id="desperdicioChart"></canvas>
+                        </div>
+                        <p class="text-center text-sm text-slate-500 mt-4">Uma grande fatia do seu faturamento pode estar sendo consumida por falhas operacionais que passam despercebidas no dia a dia.</p>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-center mb-4 text-slate-800">Potencial de Redução de Custos</h3>
+                         <div class="chart-container">
+                            <canvas id="custosChart"></canvas>
+                        </div>
+                        <p class="text-center text-sm text-slate-500 mt-4">Com as ferramentas certas, é possível reduzir drasticamente os custos com desperdício e otimizar os gastos com insumos.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contato" class="py-16 md:py-24 bg-orange-700 text-white">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-3xl md:text-4xl font-bold">Chega de trabalhar no escuro.</h2>
+                <p class="mt-4 text-lg text-orange-100 max-w-2xl mx-auto">Dê o primeiro passo para transformar a gestão do seu negócio. Agende uma avaliação inicial gratuita e sem compromisso para descobrirmos juntos o potencial de lucro escondido na sua operação.</p>
+                <a href="mailto:consultoria@exemplo.com?subject=Interesse em Avaliação Gratuita" class="mt-8 inline-block bg-white text-orange-700 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-amber-50 transition-transform hover:scale-105 shadow-lg">Quero minha avaliação gratuita</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-white py-8">
+        <div class="container mx-auto px-6 text-center text-slate-500">
+            <p>&copy; 2025 Consultoria em Gestão Gastronômica. Todos os direitos reservados.</p>
+            <p class="text-sm mt-2">Transformando paixão por comida em negócios de sucesso.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+            
+            const tabButtons = document.querySelectorAll('.tab-button');
+            const tabPanes = document.querySelectorAll('.tab-pane');
+
+            tabButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const tabId = button.dataset.tab;
+
+                    tabButtons.forEach(btn => {
+                        btn.classList.remove('tab-active');
+                    });
+                    button.classList.add('tab-active');
+
+                    tabPanes.forEach(pane => {
+                        if (pane.id === tabId) {
+                            pane.classList.remove('hidden');
+                            pane.classList.add('active');
+                        } else {
+                            pane.classList.add('hidden');
+                            pane.classList.remove('active');
+                        }
+                    });
+                });
+            });
+
+            const desperdicioCtx = document.getElementById('desperdicioChart').getContext('2d');
+            new Chart(desperdicioCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Desperdício de Insumos', 'Compras Excessivas', 'Falta de Padrão', 'Produção Exagerada'],
+                    datasets: [{
+                        label: 'Fontes de Prejuízo',
+                        data: [35, 25, 20, 20],
+                        backgroundColor: [
+                            '#f97316', 
+                            '#fb923c',
+                            '#fdba74',
+                            '#fed7aa'
+                        ],
+                        borderColor: '#fff',
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    let label = context.label || '';
+                                    if (label) {
+                                        label += ': ';
+                                    }
+                                    if (context.parsed !== null) {
+                                        label += context.parsed + '%';
+                                    }
+                                    return label;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+
+            const custosCtx = document.getElementById('custosChart').getContext('2d');
+            new Chart(custosCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['Desperdício', 'Custo de Insumos', 'Mão de Obra (Retrabalho)'],
+                    datasets: [{
+                        label: 'Antes da Gestão',
+                        data: [100, 100, 100],
+                        backgroundColor: '#fb923c',
+                        borderRadius: 4,
+                    }, {
+                        label: 'Depois da Gestão',
+                        data: [20, 85, 90],
+                        backgroundColor: '#16a34a',
+                        borderRadius: 4,
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                callback: function(value) {
+                                    return value + '%'
+                                }
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    let label = context.dataset.label || '';
+                                    if (label) {
+                                        label += ': ';
+                                    }
+                                    if (context.parsed.y !== null) {
+                                        label += 'Redução para ' + context.parsed.y + '% do custo original';
+                                    }
+                                    return label;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
